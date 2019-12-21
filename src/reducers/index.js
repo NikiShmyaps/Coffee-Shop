@@ -2,15 +2,26 @@ const initialState = {
   data: [],
   loading: true,
   error: false,
-  update: false
+  update: false,
+  currentCoffee: [
+    {
+      name: "Black Rifle Coffee",
+      country: "Kenya",
+      url:
+        "https://images-na.ssl-images-amazon.com/images/I/91vwF6Kh8IL._SX522_.jpg",
+      price: "19.75$",
+      description:
+        "Lorem ipsum dolor sit amet"
+    }
+  ]
 };
 
 const reducer = (state = initialState, action) => {
-  const {type, payload, findItems, filter} = action;
-  switch (type) {
+  switch (action.type) {
     case "DATA_LOADED":
       return {
-        data: payload,
+        ...state,
+        data: action.payload,
         loading: false,
         error: false
       };
@@ -29,7 +40,7 @@ const reducer = (state = initialState, action) => {
     case "FIND_ITEM":
       const newItems = [];
       state.data.forEach(el => {
-        if (el.name.toLowerCase().includes(findItems.toLowerCase())) {
+        if (el.name.toLowerCase().includes(action.findItems.toLowerCase())) {
           newItems.push(el);
         }
       });
@@ -45,11 +56,21 @@ const reducer = (state = initialState, action) => {
         };
       }
     case "FILTER_ITEMS":
+      const filter = action.filter;
+      console.log(filter);
       const filterData = state.data.filter(el => el.country === filter);
       return {
         ...state,
         data: filterData
-      }
+      };
+
+    case "SET-CURRENT-COFFEE":
+      const currentItem = action.currentItem;
+      const currentCoffee = state.data.filter(el => el.name === currentItem);
+      return {
+        ...state,
+        currentCoffee: currentCoffee
+      };
     default:
       return state;
   }

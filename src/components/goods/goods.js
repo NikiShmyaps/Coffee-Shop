@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./coffeeShop.sass";
 import CoffeeItem from "../coffeeItem/coffeeItem";
 import Spinner from "../spinner/spinner";
 import Error from "../error/error";
@@ -7,11 +6,11 @@ import WithService from "../hoc/withService";
 import {connect} from "react-redux";
 import {dataLoaded, dataRequsted, dataError} from "../../actions";
 
-class CoffeeShop extends Component {
+class Goods extends Component {
   componentDidMount() {
-    this.props.Service.getBestsellers()
-      .then(items => {this.props.dataLoaded(items)})
-      .catch(dataError)
+    this.props.Service.getGoods()
+    .then(items => {this.props.dataLoaded(items)})
+    .catch(dataLoaded)
   }
 
   render() {
@@ -27,10 +26,9 @@ class CoffeeShop extends Component {
       );
     }
 
-    return (
+    return(
       <>
-        <h1 className="main-title">Our best</h1>
-        <div className="list">
+        <div className="our-list">
           {data.map((item, index) => (
             <CoffeeItem key={index} item={item} pageTitle={null}/>
           ))}
@@ -59,5 +57,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default WithService()(
-  connect(mapStateToProps, mapDispatchToProps)(CoffeeShop)
+  connect(mapStateToProps, mapDispatchToProps)(Goods)
 );

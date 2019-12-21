@@ -1,7 +1,7 @@
-const dataLoaded = newData => {
+const dataLoaded = items => {
   return {
     type: "DATA_LOADED",
-    payload: newData
+    payload: items
   };
 };
 
@@ -31,4 +31,18 @@ const filterItems = filterTitle => {
   };
 };
 
-export { dataLoaded, dataRequsted, dataError, findItems, filterItems };
+const setCurrentCoffee = currentCoffee => {
+  return {
+    type: "SET-CURRENT-COFFEE",
+    currentItem: currentCoffee
+  };
+};
+
+export { 
+  dataLoaded, 
+  dataRequsted,
+  dataError, 
+  findItems, 
+  filterItems, 
+  setCurrentCoffee 
+};

@@ -1,16 +1,20 @@
 .item
   &-wrap 
     display: flex
-    justify-content: center
-    align-items: center
     flex-direction: column
-    width: 240px
-    height: 260px
-    padding: 25px
-    background: rgba(255, 255, 255, 0.65);
-    border-radius: 8px
-    margin: 25px
+    align-items: center
     cursor: pointer
+    width: 220px
+    min-height: 269px
+    margin: 60px 30px 0
+    padding: 22px 24px
+    background: hsla(0,0%,100%,.65)
+    border-radius: 8px
+    box-shadow: 5px 5px 15px rgba(0,0,0,.25)
+    transition: all .3s
+    &:hover 
+      text-decoration: none
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25)
   &-data
     display: flex
     flex-direction: column
@@ -34,6 +38,4 @@
     text-align: right,
   &-country
     margin-bottom: 10px
-    
-.shadow
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25)
+    color: #000000

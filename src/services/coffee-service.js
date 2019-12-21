@@ -1,11 +1,12 @@
 export default class Service {
-  getItems = async (url) => {
-    const res = await fetch(`http://localhost:3001${url}`);
+  async getItems (url) {
+    const res = await fetch(url);
     if (!res.ok) {
       throw new Error(`Could no fetch ${url} received ${res.status}`);
     }
     return await res.json();
   }
+
   getBestsellers = async () => {
     return await this.getItems('/bestsellers');
   };
