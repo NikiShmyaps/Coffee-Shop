@@ -32,7 +32,7 @@ class CoffeeShop extends Component {
         <h1 className="main-title">Our best</h1>
         <div className="list">
           {data.map((item, index) => (
-            <CoffeeItem key={index} item={item} pageTitle={null}/>
+            <CoffeeItem key={index} item={item} pageTitle="our-coffee/"/>
           ))}
         </div>
       </>

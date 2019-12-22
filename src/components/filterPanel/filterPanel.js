@@ -50,7 +50,7 @@ class FilterPanel extends Component {
           >
             Columbia
           </div>
-          <div className="filter-check-item" onClick={() => this.getData()}>
+          <div className="filter-check-item filter-active" onClick={() => this.getData()}>
             All
           </div>
         </div>

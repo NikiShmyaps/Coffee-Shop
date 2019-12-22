@@ -13,25 +13,19 @@ import {
 import { connect } from "react-redux";
 
 class CurrentCoffeePage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.props.dataRequsted();
-  //   this.props.Service.getCoffee()
-  //     .then(res => this.props.dataLoaded(res))
-  //     .catch(() => this.props.dataError());
-  // }
   componentDidMount() {
-    this.props.setCurrentCoffee(this.props.id);
+    console.log(this.props);
+    this.props.setCurrentCoffee(this.props.name);
     this.props.Service.getCoffee()
     .then(items => {this.props.dataLoaded(items)})
-    .catch(dataLoaded)
+    .catch(dataError)
   }
   render() {
     const { coffee } = this.props;
     const [data] = coffee;
     return (
       <div>
-        <div className="banner">
+        <div className="banner" style={{background: `url(${process.env.PUBLIC_URL + "/img/Coffee_bg.jpg"})`}}>
           <div className="container">
             <div className="row">
               <div className="col-lg-6">

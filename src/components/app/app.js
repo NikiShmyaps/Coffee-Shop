@@ -14,7 +14,7 @@ const App = () => {
           <MainPage/>
         </Route>
 
-        <Route path="/our-coffee">
+        <Route exact path="/our-coffee">
           <OurCoffee/>
         </Route>
 
@@ -22,10 +22,11 @@ const App = () => {
           <Pleasure/>
         </Route>
 
-        <Route path="/our-coffee/:id"
+        <Route path="/our-coffee/:name"
           render={({match}) => {
-            const {id} = match.params;
-            return <CurrentCoffeePage id={id}/>;
+            const {name} = match.params;
+            const replaceName = name.replace(":", "");
+            return <CurrentCoffeePage name={replaceName}/>;
           }}/>
 
         <Route path="*">

@@ -34,7 +34,7 @@ class Coffee extends Component {
             <CoffeeItem 
               key={index} 
               item={item}
-              pageTitle="/our-coffee/"/>
+              pageTitle="our-coffee/"/>
           ))}
         </div>
       </>
