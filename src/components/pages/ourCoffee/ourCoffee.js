@@ -44,7 +44,9 @@ class OurCoffee extends Component {
           </div>
         </div>
         <div className="container">
-          <Coffee/>
+          <div className="list-items">
+            <Coffee/>
+          </div>
         </div>
         <Footer/>
       </div>

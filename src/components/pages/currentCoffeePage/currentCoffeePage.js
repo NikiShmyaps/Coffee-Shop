@@ -14,15 +14,14 @@ import { connect } from "react-redux";
 
 class CurrentCoffeePage extends Component {
   componentDidMount() {
-    console.log(this.props);
-    this.props.setCurrentCoffee(this.props.name);
     this.props.Service.getCoffee()
-    .then(items => {this.props.dataLoaded(items)})
-    .catch(dataError)
+      .then((res) => {
+        this.props.dataLoaded(res)
+        this.props.setCurrentCoffee(this.props.name)
+      })
+      .catch(dataError)
   }
   render() {
-    const { coffee } = this.props;
-    const [data] = coffee;
     return (
       <div>
         <div className="banner" style={{background: `url(${process.env.PUBLIC_URL + "/img/Coffee_bg.jpg"})`}}>
@@ -35,7 +34,7 @@ class CurrentCoffeePage extends Component {
             <h1 className="title-big">Our Coffee</h1>
           </div>
         </div>
-        <CurrentCoffee data={data} />
+        <CurrentCoffee data={this.props.coffee}/>
         <Footer />
       </div>
     );
@@ -44,8 +43,7 @@ class CurrentCoffeePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    coffee: state.currentCoffee,
-    mas: state.data
+    coffee: state.currentCoffee
   };
 };
 

@@ -3,17 +3,7 @@ const initialState = {
   loading: true,
   error: false,
   update: false,
-  currentCoffee: [
-    {
-      name: "Black Rifle Coffee",
-      country: "Kenya",
-      url:
-        "https://images-na.ssl-images-amazon.com/images/I/91vwF6Kh8IL._SX522_.jpg",
-      price: "19.75$",
-      description:
-        "Lorem ipsum dolor sit amet"
-    }
-  ]
+  currentCoffee: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,7 +47,6 @@ const reducer = (state = initialState, action) => {
       }
     case "FILTER_ITEMS":
       const filter = action.filter;
-      console.log(filter);
       const filterData = state.data.filter(el => el.country === filter);
       return {
         ...state,
@@ -66,7 +55,7 @@ const reducer = (state = initialState, action) => {
 
     case "SET-CURRENT-COFFEE":
       const currentItem = action.currentItem;
-      const currentCoffee = state.data.filter(el => el.name === currentItem);
+      const currentCoffee = state.data.filter(el => el.name === currentItem)[0];
       return {
         ...state,
         currentCoffee: currentCoffee
