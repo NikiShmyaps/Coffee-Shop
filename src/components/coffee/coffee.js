@@ -13,6 +13,7 @@ class Coffee extends Component {
     .then(items => {this.props.dataLoaded(items)})
     .catch(dataLoaded)
   }
+  
 
   render() {
     const {data, loading, error} = this.props;
